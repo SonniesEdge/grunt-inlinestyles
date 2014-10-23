@@ -24,6 +24,7 @@
     "grunt-contrib-nodeunit": "~0.3.0",
     "jshint-stylish": "~0.1.5",
     "load-grunt-tasks": "~0.3.0",
+    "uglifyjs": "^2.3.6",
     "url": "^0.10.1"
   },
   "scripts": {

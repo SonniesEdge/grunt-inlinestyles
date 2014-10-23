@@ -18,17 +18,18 @@ module.exports = function (grunt) {
   var path = require('path');
   var cheerio = require('cheerio');
   var url = require('url');
+  var fs = require('fs');
 
 
   grunt.registerMultiTask('inlinestyles', 'The best Grunt plugin ever.', function () {
 
     var options = this.options({
-      jsDir: "",
+      basepath: process.cwd(),
       cssDir: "",
       minify: false
     });
 
-grunt.log.writeln(JSON.stringify(options));
+// grunt.log.writeln(JSON.stringify(options));
 
     // Iterate over all specified file groups.
     this.files.forEach(function (file) {
@@ -46,6 +47,9 @@ grunt.log.writeln(JSON.stringify(options));
         var cssdomain;
         var csspath;
         var csscontents;
+        var csslinktype;
+        var csslinksubtype;
+        var cssbasepath;
 
         // Get href
         var hrefinfo = $(this).attr('href');
@@ -56,17 +60,54 @@ grunt.log.writeln(JSON.stringify(options));
         // Parse path
         csspath = url.parse(hrefinfo).pathname;
 
-        grunt.log.writeln(cssdomain);
-        grunt.log.writeln(csspath);
+
 
 
         // Determine if initial csspath is relative or absolute
         // TODO: how to handle relative paths? path.normalize?
 
+        /*
+        format could be:
+
+        URI
+        http://example.com/path/1/2/3/main.css
+        https://example.com/path/1/2/3/main.css
+        //example.com/path/1/2/3/main.css
+
+        PATH
+        /path/1/2/3/main.css
+        ./path/1/2/3/main.css
+        ../1/2/3/main.css
+        */
+
+
+        // Is it a URI or a path?
+        if (csspath.substr(0, 7) === 'http://' || csspath.substr(0, 8) === 'https://' || csspath.substr(0, 2) === '//') {
+          csslinktype = 'uri';
+        } else {
+          csslinktype = 'path';
+          if (csspath.substr(0, 1) !== '/') {
+            csslinksubtype = 'relative';
+          } else {
+            csslinksubtype = 'absolute';
+          }
+        }
+
 
         // If basepath supplied, append to start of csspath
         if (options.basepath) {
+
+          // Basepath should be relative to cwd
+          cssbasepath = path.resolve(options.basepath);
+
+          grunt.log.writeln('CSS base path: ' + cssbasepath);
+
           grunt.log.writeln('base path supplied');
+          if (csslinksubtype === 'absolute') {
+            grunt.log.writeln('absolute path');
+            csspath = path.join(cssbasepath + csspath);
+            // csspath = path.normalize(csspath);
+          }
         }
 
         // If remotedomain supplied, append to start of path
@@ -81,14 +122,27 @@ grunt.log.writeln(JSON.stringify(options));
           // If contentpath is a URL, suck via something
 
           // if contentpath is a filepath, grab via normal stuff
+          // csscontents = fs.readFile(csspath);
+          grunt.log.writeln('outside function');
+
+          csscontents = grunt.file.read(csspath);
+
+
+
+        // Minify CSS
+
+        csscontents = uglify.minify(csscontents);
 
 
         // Generate new inline contents
           // <style></style>
 
+        grunt.log.writeln('Domain: ' + cssdomain);
+        grunt.log.writeln('CSS path: ' + csspath);
+        grunt.log.writeln('CSS contents:');
+        grunt.log.writeln(csscontents);
 
-
-        $(this).replaceWith('<style>\n' + csscontents + '\n</style>');
+        $(this).replaceWith('<style>' + csscontents + '</style>');
       }); // end foreach link
 
       // what are the filenams being supplied?

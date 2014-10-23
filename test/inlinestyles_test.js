@@ -40,30 +40,30 @@ exports.inlinestyles = {
 
     test.done();
   },
-  relativepath_options: function (test) {
-    test.expect(2);
-
-    var actualbasic = grunt.file.read('tmp/relativepath_basic'); // CHANGE TO OUTPUTTED CODE
-    var expectedbasic = grunt.file.read('test/expected/page_relative_path_nohost.html');
-    test.equal(actualbasic, expectedbasic, 'CSS linked via relative path gets inlined, basic grunt import');
-
-    var actualglobbing = grunt.file.read('tmp/relativepath_globbing'); // CHANGE TO OUTPUTTED CODE
-    var expectedglobbing = grunt.file.read('test/expected/page_relative_path_nohost.html');
-    test.equal(actualglobbing, expectedglobbing, 'CSS linked via relative path gets inlined, globbing grunt import');
-
-    test.done();
-  },
-  absoluteuri_options: function (test) {
-    test.expect(2);
-
-    var actualbasic = grunt.file.read('tmp/absoluteuri_basic'); // CHANGE TO OUTPUTTED CODE
-    var expectedbasic = grunt.file.read('test/expected/page_absolute_uri.html');
-    test.equal(actualbasic, expectedbasic, 'CSS linked via an absolute URI gets inlined, basic grunt import');
-
-    var actualglobbing = grunt.file.read('tmp/absoluteuri_globbing'); // CHANGE TO OUTPUTTED CODE
-    var expectedglobbing = grunt.file.read('test/expected/page_absolute_uri.html');
-    test.equal(actualglobbing, expectedglobbing, 'CSS linked via an absolute URI gets inlined, globbing grunt import');
-
-    test.done();
-  }
+  // relativepath_options: function (test) {
+  //   test.expect(2);
+  //
+  //   var actualbasic = grunt.file.read('tmp/relativepath_basic'); // CHANGE TO OUTPUTTED CODE
+  //   var expectedbasic = grunt.file.read('test/expected/page_relative_path_nohost.html');
+  //   test.equal(actualbasic, expectedbasic, 'CSS linked via relative path gets inlined, basic grunt import');
+  //
+  //   var actualglobbing = grunt.file.read('tmp/relativepath_globbing'); // CHANGE TO OUTPUTTED CODE
+  //   var expectedglobbing = grunt.file.read('test/expected/page_relative_path_nohost.html');
+  //   test.equal(actualglobbing, expectedglobbing, 'CSS linked via relative path gets inlined, globbing grunt import');
+  //
+  //   test.done();
+  // },
+  // absoluteuri_options: function (test) {
+  //   test.expect(2);
+  //
+  //   var actualbasic = grunt.file.read('tmp/absoluteuri_basic'); // CHANGE TO OUTPUTTED CODE
+  //   var expectedbasic = grunt.file.read('test/expected/page_absolute_uri.html');
+  //   test.equal(actualbasic, expectedbasic, 'CSS linked via an absolute URI gets inlined, basic grunt import');
+  //
+  //   var actualglobbing = grunt.file.read('tmp/absoluteuri_globbing'); // CHANGE TO OUTPUTTED CODE
+  //   var expectedglobbing = grunt.file.read('test/expected/page_absolute_uri.html');
+  //   test.equal(actualglobbing, expectedglobbing, 'CSS linked via an absolute URI gets inlined, globbing grunt import');
+  //
+  //   test.done();
+  // }
 };

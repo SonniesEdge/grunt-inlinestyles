@@ -33,11 +33,11 @@ module.exports = function (grunt) {
     // Configuration to be run (and then tested).
     inlinestyles: {
       options: {
-        
+        basepath: 'test/fixtures/'
       },
       absolutepath_basic: {
         options: {
-          basepath: 'changed'
+
         },
         files: {
           'tmp/absolutepath_basic': 'test/fixtures/page_absolute_path_nohost.html'
@@ -52,13 +52,13 @@ module.exports = function (grunt) {
         }
       },
 
-      relativepath_basic: {
-        options: {
-        },
-        files: {
-          'tmp/relativepath_basic': 'test/fixtures/page_relative_path_nohost.html'
-        }
-      },
+      // relativepath_basic: {
+      //   options: {
+      //   },
+      //   files: {
+      //     'tmp/relativepath_basic': 'test/fixtures/page_relative_path_nohost.html'
+      //   }
+      // },
 
       // relativepath_mixed: {
       //   options: {
@@ -85,13 +85,13 @@ module.exports = function (grunt) {
       // },
       //
       //
-      absoluteuri_basic: {
-        options: {
-        },
-        files: {
-          'tmp/absoluteuri_basic': 'test/fixtures/page_absolute_uri.html'
-        }
-      },
+      // absoluteuri_basic: {
+      //   options: {
+      //   },
+      //   files: {
+      //     'tmp/absoluteuri_basic': 'test/fixtures/page_absolute_uri.html'
+      //   }
+      // },
       //
       // absoluteuri_globbing: {
       //   options: {

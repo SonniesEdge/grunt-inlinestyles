@@ -1,6 +1,7 @@
 # grunt-inlinestyles
 
 > Simple module to inline a selected CSS file
+
 Not in a production state as yet, so, you know. Don't use it.
 
 ## Getting Started
