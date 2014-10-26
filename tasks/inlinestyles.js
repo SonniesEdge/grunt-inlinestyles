@@ -19,6 +19,7 @@ module.exports = function (grunt) {
   var cheerio = require('cheerio');
   var url = require('url');
   var fs = require('fs');
+  var cleanCSS = require('clean-css');
 
 
   grunt.registerMultiTask('inlinestyles', 'The best Grunt plugin ever.', function () {
@@ -130,8 +131,7 @@ module.exports = function (grunt) {
 
 
         // Minify CSS
-
-        csscontents = uglify.minify(csscontents);
+        csscontents = cleanCSS().minify(csscontents);
 
 
         // Generate new inline contents

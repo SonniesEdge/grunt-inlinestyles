@@ -18,6 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "cheerio": "^0.17.0",
+    "clean-css": "^2.2.16",
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-jshint": "~0.8.0",
