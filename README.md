@@ -1,8 +1,22 @@
 # grunt-inlinestyles
 
-> Simple module to inline a selected CSS file
+> A Grunt plugin to inline a selected CSS file. Ideal for inlining critical CSS.
 
-Not in a production state as yet, so, you know. Don't use it.
+This will take a HTML stylesheet link and inline the target CSS.
+
+This means that:
+
+```
+<link rel="stylesheet" href="/css/stylesheet.css" data-inline="true">
+```
+
+will become:
+
+```
+<style>h1{font-style:italic}</style>
+```
+
+This module does *not* inline javascript, images or fonts. 
 
 ## Getting Started
 This plugin requires Grunt.
@@ -29,9 +43,15 @@ grunt.initConfig({
   inlinestyles: {
     options: {
       // Task-specific options go here.
+      basepath: './',
+      minify: true,
+      tag: '[data-inline="true"]'
     },
     your_target: {
       // Target-specific file lists and/or options go here.
+      files: {
+        'destination.html': 'source.html'
+      }
     },
   },
 })
@@ -39,13 +59,19 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.basepath
 Type: `String`
 Default value: `',  '`
 
 A string value that is used to do something with whatever.
 
-#### options.punctuation
+#### options.minify
+Type: `boolean`
+Default value: `'.'`
+
+A string value that is used to do something else with whatever else.
+
+#### options.tag
 Type: `String`
 Default value: `'.'`
 
