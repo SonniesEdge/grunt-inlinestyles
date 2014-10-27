@@ -63,19 +63,19 @@ grunt.initConfig({
 Type: `String`
 Default value: `'process.cwd()'`
 
-A string value that is used to do something with whatever.
+A string value that is used to indicate the root of your website. 'Absolute' CSS links are relative to this value. 
 
 #### options.minify
 Type: `boolean`
 Default value: `true`
 
-A string value that is used to do something else with whatever else.
+A boolean that is used to turn minification of the inlined CSS on or off.
 
 #### options.tag
 Type: `String`
 Default value: `'[data-inline="true"]'`
 
-A string value that is used to do something else with whatever else.
+A string value that is used to designate a CSS link that is to be inlined.
 
 ### Usage Examples
 
@@ -94,7 +94,7 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, custom options are used to specify a new basepath, disable CSS minification and to add a new inlining tag. 
 
 ```js
 grunt.initConfig({
