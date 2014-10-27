@@ -16,7 +16,7 @@ will become:
 <style>h1{font-style:italic}</style>
 ```
 
-This module does *not* inline javascript, images or fonts. 
+This module does *not* inline javascript, images or fonts.
 
 ## Getting Started
 This plugin requires Grunt.
@@ -63,7 +63,7 @@ grunt.initConfig({
 Type: `String`
 Default value: `'process.cwd()'`
 
-A string value that is used to indicate the root of your website. 'Absolute' CSS links are relative to this value. 
+A string value that is used to indicate the root of your website. 'Absolute' CSS links are relative to this value.
 
 #### options.minify
 Type: `boolean`
@@ -94,7 +94,7 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, custom options are used to specify a new basepath, disable CSS minification and to add a new inlining tag. 
+In this example, custom options are used to specify a new basepath, disable CSS minification and to add a new inlining tag.
 
 ```js
 grunt.initConfig({
@@ -115,7 +115,7 @@ grunt.initConfig({
 Contributions are welcome! Hit me up via [@sonniesedge](https://twitter.com/sonniesedge)
 
 ## Release History
-v0.1 Initial release
+v0.0.1 Initial release
 
 ## License
 Copyright (c) 2014 . Licensed under the MIT license.
