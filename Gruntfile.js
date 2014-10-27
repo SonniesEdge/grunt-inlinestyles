@@ -52,13 +52,13 @@ module.exports = function (grunt) {
         }
       },
 
-      // relativepath_basic: {
-      //   options: {
-      //   },
-      //   files: {
-      //     'tmp/relativepath_basic': 'test/fixtures/page_relative_path_nohost.html'
-      //   }
-      // },
+      relativepath_basic: {
+        options: {
+        },
+        files: {
+          'tmp/relativepath_basic': 'test/fixtures/page_relative_path_nohost.html'
+        }
+      },
 
       // relativepath_mixed: {
       //   options: {
@@ -71,18 +71,18 @@ module.exports = function (grunt) {
       // ],
       // },
 
-      // relativepath_globbing: {
-      //   options: {
-      //   },
-      //   files: [
-      //   {
-      //     expand: true,     // Enable dynamic expansion.
-      //     cwd: 'test/fixtures/globbing/',      // Src matches are relative to this path.
-      //     src: ['**/*.html'], // Actual pattern(s) to match.
-      //     dest: 'tmp/',   // Destination path prefix.
-      //   },
-      // ],
-      // },
+      relativepath_globbing: {
+        options: {
+        },
+        files: [
+        {
+          expand: true,     // Enable dynamic expansion.
+          cwd: 'test/fixtures/globbing/',      // Src matches are relative to this path.
+          src: ['**/*.html'], // Actual pattern(s) to match.
+          dest: 'tmp/relativepath_globbing/',   // Destination path prefix.
+        },
+      ],
+      },
       //
       //
       // absoluteuri_basic: {

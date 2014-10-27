@@ -103,12 +103,24 @@ module.exports = function (grunt) {
 
           grunt.log.writeln('CSS base path: ' + cssbasepath);
 
-          grunt.log.writeln('base path supplied');
           if (csslinksubtype === 'absolute') {
             grunt.log.writeln('absolute path');
             csspath = path.join(cssbasepath + csspath);
             // csspath = path.normalize(csspath);
           }
+
+
+        }
+
+        if (csslinksubtype === 'relative') {
+          grunt.log.writeln('relative path');
+
+          // Get current HTML directory
+          var htmlpath = path.dirname(file.src);
+          htmlpath = path.resolve(htmlpath);
+
+          // combine together with magic
+          csspath = path.resolve(htmlpath, csspath);
         }
 
         // If remotedomain supplied, append to start of path
@@ -120,15 +132,10 @@ module.exports = function (grunt) {
 
 
         // Get contents of CSS file
-          // If contentpath is a URL, suck via something
+        // If contentpath is a URL, suck via something
 
-          // if contentpath is a filepath, grab via normal stuff
-          // csscontents = fs.readFile(csspath);
-          grunt.log.writeln('outside function');
-
-          csscontents = grunt.file.read(csspath);
-
-
+        // if contentpath is a filepath, read file
+        csscontents = grunt.file.read(csspath);
 
         // Minify CSS
         csscontents = cleanCSS().minify(csscontents);
